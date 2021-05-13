@@ -57,7 +57,7 @@
       <recent name="D:\Dokumenty\IntelliJ\ATM_Simulator\src\main\java" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.ManagerMain">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="app.Main" />
       <module name="ATM_Simulator" />
