@@ -9,15 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c667451-499f-40be-89f7-96d4f1ac4c0f" name="Default Changelist" comment="Upload">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ATM_Manager/ATM_Manager.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ATM_Manager/ATM_Manager.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ATM_Simulator_jar/userdata/settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ATM_Simulator_jar/userdata/settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/manager/AppManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/manager/AppManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/manager/ManagerWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/manager/ManagerWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/manager/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/manager/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/settings/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/settings/Settings.java" afterDir="false" />
-    </list>
+    <list default="true" id="9c667451-499f-40be-89f7-96d4f1ac4c0f" name="Default Changelist" comment="Upload" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -220,7 +212,21 @@
       <option name="project" value="LOCAL" />
       <updated>1620925541335</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Upload">
+      <created>1620929600637</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1620929600637</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Upload">
+      <created>1620929816072</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1620929816072</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
