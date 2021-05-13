@@ -1,2 +1,31 @@
 # Project exclude paths
 /JDC/
+/.txt
+/0.xcf
+/000.xcf
+/000_w.xcf
+/0_w.xcf
+/arrow_left.xcf
+/arrow_left_w.xcf
+/arrow_right.xcf
+/arrow_right_w.xcf
+/banknotes_a.xcf
+/banknotes_in.xcf
+/cancel.xcf
+/cancel_b.xcf
+/cancel_b_w.xcf
+/cancel_w.xcf
+/card_slot_a.xcf
+/card_slot_in.xcf
+/clear.xcf
+/clear_w.xcf
+/delete.xcf
+/delete_b.xcf
+/delete_b_w.xcf
+/delete_w.xcf
+/enter.xcf
+/enter_w.xcf
+/recipt_a.xcf
+/recipt_in.xcf
+/settings.xml
+/Wytyczne do klas.txt
