@@ -1,6 +1,0 @@
-Klasy z pakietu app mogą być przez was modyfikowane w dowolny sposób.
-Klasa Settings może być jedynie rozbudowywana o nowe pola i metody - informować o zmianach, które mogą być wykorzystane przez menadżera (np. customowe tekstury itp.).
-Klasa XMLTools - tak samo jak klasa Settings - informować o istotnych zmianach.
-Klasy z pakietu app nie powinny być modyfikowane jeśli chodzi o pola i liczbę argumentów lub nazwy metod - informować o zmianach.
-Pakietu manager NIE RUSZAĆ CHOĆBY NIE WIEM CO!!!!
-Opis klas metod i pól zawarty jest w Documentation(PL).zip na githubie pod adresem: https://github.com/Kubalak/ATM-repo
