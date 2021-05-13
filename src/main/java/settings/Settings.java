@@ -105,13 +105,18 @@ public abstract class Settings
                 posX = -1;
                 posY = -1;
             }
-            currency = XMLTools.getData(data.toString(),"currency");
-            currentUser = Integer.parseInt(XMLTools.getData(data.toString(),"current"));
-            ANumberOfUsers = XMLTools.countOccurrence(data.toString(),"<user>");
-            for(int i=0;i<ANumberOfUsers;i++)
+            try {
+                currency = XMLTools.getData(data.toString(), "currency");
+                currentUser = Integer.parseInt(XMLTools.getData(data.toString(), "current"));
+                ANumberOfUsers = XMLTools.countOccurrence(data.toString(), "<user>");
+                for (int i = 0; i < ANumberOfUsers; i++) {
+                    users.add(User.getFromXML(tmp));
+                    tmp = User.moveToNext(tmp);
+                }
+            }
+            catch(NumberFormatException | NullPointerException exception)
             {
-                users.add(User.getFromXML(tmp));
-                tmp = User.moveToNext(tmp);
+                System.out.println("Exception: "+exception.getMessage());
             }
         }
         catch(NullPointerException | FileNotFoundException exception)

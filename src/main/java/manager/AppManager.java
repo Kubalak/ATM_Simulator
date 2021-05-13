@@ -112,7 +112,6 @@ public class AppManager extends JPanel implements ActionListener, Manager
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == apply)
         {
-            System.out.println("You have applied somethings.");
             try
             {
                 Settings.posX = Integer.parseInt(xField.getText());

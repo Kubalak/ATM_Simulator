@@ -6,6 +6,8 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.Objects;
 
@@ -27,6 +29,55 @@ public class ManagerWindow extends JFrame implements ActionListener, ChangeListe
         this.setResizable(false);
         this.setLocation(Settings.posX,Settings.posY);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                if(!Settings.users.isEmpty())
+                {
+               int result = JOptionPane.showConfirmDialog(null,"Do you want to save your work?","Confirm exit",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+               if(result == JOptionPane.YES_OPTION)
+               {
+                   if(Settings.path==null) {
+                       if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                           Settings.path = chooser.getSelectedFile().getAbsolutePath();
+                           Settings.path += Settings.path.contains("\\") ? "\\" : "/";
+                           if(Settings.users.isEmpty())
+                           {
+                               JOptionPane.showMessageDialog(null,"Cannot save empty users!","Save error",JOptionPane.ERROR_MESSAGE);
+                               return;
+                           }
+                           for(int i=0;i<Settings.users.size();i++)
+                           {
+                               if(Settings.users.get(i).getCards().isEmpty())
+                               {
+                                   JOptionPane.showMessageDialog(null,"Cannot save users without cards!","Save error",JOptionPane.ERROR_MESSAGE);
+                                   return;
+                               }
+                           }
+                           Settings.saveState();
+                       }
+                   }
+                   else {
+                       if(Settings.users.isEmpty())
+                       {
+                           System.exit(0);
+                       }
+                       for(int i=0;i<Settings.users.size();i++)
+                       {
+                           if(Settings.users.get(i).getCards().isEmpty())
+                           {
+                               JOptionPane.showMessageDialog(null,"Cannot save users without cards!","Save error",JOptionPane.ERROR_MESSAGE);
+                               return;
+                           }
+                       }
+                       Settings.saveState();
+                   }
+               }
+                Settings.saveState();
+                }
+                System.exit(0);
+            }
+        });
         chooser = new JFileChooser();
         chooser.setCurrentDirectory(new File("."));
         chooser.setDialogTitle("Folder to open");
@@ -143,6 +194,7 @@ public class ManagerWindow extends JFrame implements ActionListener, ChangeListe
     public void stateChanged(ChangeEvent e)
     {
         if(Pane.getSelectedComponent() == App)App.updateFields();
+        else if(Pane.getSelectedComponent() == Usr)Usr.updateFields();
         else if(Pane.getSelectedComponent() == Crd)Crd.updateFields();
         else Wlt.updateFields();
     }

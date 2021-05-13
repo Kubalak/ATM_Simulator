@@ -97,8 +97,8 @@ public class UserManager extends JPanel implements ActionListener,Manager{
     @Override
     public void updateFields()
     {
-        selected.removeAllItems();
         selectedCrd.removeAllItems();
+        selected.removeAllItems();
         if(!Settings.users.isEmpty()) {
             apply.setEnabled(true);
             delete.setEnabled(true);
@@ -111,16 +111,17 @@ public class UserManager extends JPanel implements ActionListener,Manager{
             }
             if (selectedIndex >= Settings.users.size() || selectedIndex < 0) selectedIndex = Settings.currentUser();
 
-            selected.setSelectedIndex(selectedIndex);
             User tmp = Settings.users.get(selectedIndex);
             name.setText(tmp.Name);
             surname.setText(tmp.Surname);
-            if(!tmp.getCards().isEmpty()) {
+            if(!tmp.getCards().isEmpty())
+            {
                 for (int i = 0; i < tmp.getCards().size(); i++) {
                     selectedCrd.addItem(i);
                 }
                 selectedCrd.setSelectedIndex(tmp.getCardIndex());
             }
+            selected.setSelectedIndex(selectedIndex);
         }
         else {
             apply.setEnabled(false);
@@ -142,6 +143,7 @@ public class UserManager extends JPanel implements ActionListener,Manager{
             if(name.getText().isEmpty()||surname.getText().isEmpty())
             {
                 JOptionPane.showMessageDialog(this,"You cannot pass empty user details!","Input error",JOptionPane.ERROR_MESSAGE);
+                System.out.println("Update - Fail!");
                 return;
             }
             if(!Settings.users.isEmpty()) {
@@ -150,6 +152,7 @@ public class UserManager extends JPanel implements ActionListener,Manager{
                 tmp.Name = name.getText();
                 tmp.Surname = surname.getText();
                 tmp.switchCard(selectedCrd.getSelectedIndex());
+                System.out.println("Update - Success!");
             }
         }
         else if(e.getSource() == add)
@@ -167,7 +170,12 @@ public class UserManager extends JPanel implements ActionListener,Manager{
                     JOptionPane.showMessageDialog(this,"Cannot insert empty surname to user!","User creation error!",JOptionPane.ERROR_MESSAGE);
                     ok = false;
                 }
-                if(ok)Settings.addUser(new User(input.name.getText(),input.surname.getText()));
+                if(ok){
+                    Settings.addUser(new User(input.name.getText(),input.surname.getText()));
+                    System.out.println("Add - Success!");
+                }
+                else System.out.println("Add - Fail!");
+
                 updateFields();
             }
 
@@ -180,7 +188,7 @@ public class UserManager extends JPanel implements ActionListener,Manager{
         else if(e.getSource() == selected)
         {
             selectedIndex = selected.getSelectedIndex()!=-1?selected.getSelectedIndex():selectedIndex;
-            System.out.println("Yo");
+            selectedCrd.removeAllItems();
             updateFields();
         }
 
