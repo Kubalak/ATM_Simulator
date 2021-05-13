@@ -65,7 +65,7 @@
       <recent name="D:\Dokumenty\IntelliJ\ATM_Simulator\src\main\java" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ManagerMain">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="app.Main" />
       <module name="ATM_Simulator" />
@@ -120,8 +120,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ManagerMain" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.ManagerMain" />
         <item itemvalue="JUnit.CreditCardTest" />
         <item itemvalue="JUnit.WalletTest" />
       </list>
