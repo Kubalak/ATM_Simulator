@@ -512,9 +512,6 @@ catch(Exception e)
     public void actionPerformed(ActionEvent e)
     {
         Sound sounds_play = new Sound();
-
-
-
         if(e.getSource()==keyNumber0){
             State.sendSignal(0,operational);
             sounds_play.playSound("/sounds/dzwiek_klikania.wav");

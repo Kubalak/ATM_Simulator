@@ -153,8 +153,6 @@ public class StateManager extends JPanel
         this.add(Center);
         this.repaint();
         System.out.println("Insert card.");
-
-
     }
 
     /**
@@ -189,7 +187,7 @@ public class StateManager extends JPanel
      */
     public int insertCard()
     {
-        if(!isCardInserted && currentState.equals("IDLE"))
+        if(!isCardInserted && currentState.equals("IDLE") && !user.isCardLocked())
         {
             isCardInserted = true;
             lastState = currentState;
@@ -198,9 +196,14 @@ public class StateManager extends JPanel
             System.out.print("Card insert success!\nPlease enter PIN:");
             return 0;
         }
-        if(user.isCardLocked())System.out.println("Card check failed! Please insert another card.");
-        if(isCardInserted) System.out.println("Card is already inserted!");
-        else if(!currentState.equals("INPUT")&&!currentState.equals("OUTPUT")) System.out.println("Card insertion is not allowed at the moment!");
+        if(user.isCardLocked()) {
+            System.out.println("Card check failed! Please insert another card.");
+            new Sound().playSound("/sounds/dlugie_pikanie_kilka.wav");
+            changeState(states[9]);
+            updateVisible();
+            this.repaint();
+        }
+        else if(isCardInserted) System.out.println("Card is already inserted!");
         else System.out.println("Card insertion is now not allowed!");
         return -1;
     }
@@ -361,7 +364,7 @@ public class StateManager extends JPanel
             RightTop.setText("");
             RightMiddle.setText("");
             RightBottom.setText("");
-        }else if(currentState.equals("CARD_BLOCKED") && failsNo == 0)
+        }else if(currentState.equals("CARD_BLOCKED"))
         {
 
             LeftTop.setText("");
