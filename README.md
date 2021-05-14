@@ -1,5 +1,13 @@
-# ATM-repo
-Atm project repository.
+# ATM_Simulator
+Atm simulator project repository.
+
+# Changelog v1.0
+Fixed known issues in `UserManager` class.
+When loading file confirm dialog is shown to confirm operation if exisiting users are found.<br>
+While loading file existing configuration is deleted.<br>
+When exiting confirm dialog is shown whether to save file or not.<br>
+Minor sounds tweaks.<br>
+Documented Manager classes and methods.
 
 # Changelog v0.8.9
 Created `AppManager` `UserManager` `CardManager` `WalletManager` classes for the manager app.<br>
