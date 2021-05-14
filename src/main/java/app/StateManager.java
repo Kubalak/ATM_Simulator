@@ -71,21 +71,18 @@ public class StateManager extends JPanel
      * Etykiety używane do komunikacji ze światem zewnętrznym.
      */
     private final JLabel LeftTop,LeftMiddle,LeftBottom,Top,Center,RightTop,RightMiddle,RightBottom;
-
-
-    Sound sounds_play = new Sound();
-
-
-    Random generator = new Random();
-
+    /**
+     * Obiekt służący do odtwarzania dźwięków.
+     */
+    private final Sound sounds_play = new Sound();
+    /**
+     * Generator liczb pseudolosowych do wyboru dźwięku do odtworzenia.
+     */
+    private final Random generator = new Random();
+    /**
+     * Liczba wygenerowana przez generator liczb pseudolosowych.
+     */
     private int random_number;
-
-
-
-
-
-
-
     /**
      * Jedyny konstruktor klasy.
      * @param user <b style="color:#541704;">User</b> - Użytkownik, który będzie korzystał z bankomatu.

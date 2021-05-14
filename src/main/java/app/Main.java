@@ -15,7 +15,7 @@ public class Main {
 
     /**
      * Statyczna metoda - główna funkcja programu.
-     * @param args <b style="color:#0B5E03;">String</b> Argumenty wiersza polecenia dla programu.
+     * @param args <b style="color:#0B5E03;">String[]</b> Argumenty wiersza polecenia dla programu.
      */
     public static void main(String[] args)
     {

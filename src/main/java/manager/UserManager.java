@@ -1,22 +1,47 @@
 package manager;
-
 import settings.Settings;
 import user.User;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Klasa odpowiedzialna za operację na użytkownikach - dodawanie, aktualizowanie i usuwanie użytkowników.
+ * @author Jakub Jach
+ * @version 1.0
+ * @since 2021-05-12
+ */
 public class UserManager extends JPanel implements ActionListener,Manager{
+    /**
+     * Pola tekstowe z imieniem i nazwiskiem użytkownika.
+     */
     private JTextField name,surname;
+    /**
+     * Listy rozwijane dla wybranej karty i edytowanego użytkownika.
+     */
     public final JComboBox <Integer> selected, selectedCrd;
+    /**
+     * Pole zawiera indeks wybranego użytkownika do edycji.
+     */
     public int selectedIndex = 0;
-    private JButton apply, add, delete;
-
-    private class UserInput extends JPanel
+    /**
+     * Przyciski do zatwierdzenia ustawień, dodania i usunięcia użytkownika.
+     */
+    private final JButton apply, add, delete;
+    /**
+     * Wewnętrza klasa do okien dialogowych.
+     */
+    private static class UserInput extends JPanel
     {
+        /**
+         * Pola tekstowe na imię i nazwisko.
+         */
         public JTextField name,surname;
+
+        /**
+         * Jedyny konstruktor klasy.
+         */
         UserInput()
         {
             name = new JTextField();
@@ -27,9 +52,11 @@ public class UserManager extends JPanel implements ActionListener,Manager{
             this.add(new JLabel("Surname: "));
             this.add(surname);
         }
-
     }
 
+    /**
+     * Jedyny konstruktor klasy.
+     */
     UserManager()
     {
         this.setLayout(null);
@@ -93,7 +120,9 @@ public class UserManager extends JPanel implements ActionListener,Manager{
         this.add(delete);
     }
 
-
+    /**
+     * Metoda służąca do odświeżania pól.
+     */
     @Override
     public void updateFields()
     {
@@ -134,7 +163,10 @@ public class UserManager extends JPanel implements ActionListener,Manager{
             surname.setText("");
         }
     }
-
+    /**
+     * Metoda odpowiedzialna za reagowanie na akcje użytkownika.
+     * @param e <b style="color:#541704;">ActionEvent</b> - Akcja wykonana przez użytkownika np. naciśnięcie przycisku.
+     */
     @Override
     public void actionPerformed(ActionEvent e)
     {
@@ -175,10 +207,8 @@ public class UserManager extends JPanel implements ActionListener,Manager{
                     System.out.println("Add - Success!");
                 }
                 else System.out.println("Add - Fail!");
-
                 updateFields();
             }
-
         }
         else if(e.getSource() == delete)
         {
@@ -191,7 +221,5 @@ public class UserManager extends JPanel implements ActionListener,Manager{
             selectedCrd.removeAllItems();
             updateFields();
         }
-
-
     }
 }

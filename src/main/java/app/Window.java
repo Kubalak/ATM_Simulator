@@ -31,7 +31,6 @@ public class Window extends JFrame implements ActionListener{
      * Przycisk używzany przez główne okno - klawisze specjalne kalwisze na keypadzie.
      */
    private final JButton  keyEnter, keyDelete, keyClear,keyCancel,keyCardtestonly;
-
     /**
      * Przyciski używzany przez główne okno - operacje przekazywania gotówki.
      */

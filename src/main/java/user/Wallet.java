@@ -27,6 +27,10 @@ public class Wallet
         else tens = twenties = fifties = hundreds = two_hundreds = five_hundreds = 1;
     }
 
+    /**
+     * Konstruktor tworzący obiekt będący kopią podanego w argumencie.
+     * @param wallet <b style="color:#541704;">Wallet</b>  - Portfel, którego kopia ma być stworzona.
+     */
     public Wallet(Wallet wallet)
     {
         this.tens = wallet.tens;
@@ -58,6 +62,12 @@ public class Wallet
 
     }
 
+    /**
+     * Metoda do administracyjnego ustawiania zawartości obiektu.
+     * Używana przez klasy dziedziczące.
+     *  @param what <b style="color:#0B5E03;">String</b> - Nazwa banknotu, który ma zostać wypłacony.
+     *  @param amount <b style="color:#B45700;">int</b> - Ilość banknotu do wypłaty.
+     */
     protected void adminSet(String what, int amount)
     {
         if(amount<0||what==null)
@@ -78,6 +88,7 @@ public class Wallet
      * Metoda służąca do wpłacania gotówki według nominałów.
      * @param what <b style="color:#0B5E03;">String</b> - Nazwa banknotu, którego ilość ma być wpłacona.
      * @param amount <b style="color:#B45700;">int</b> - Ilość sztuk danego banknotu.
+     * @return Zwraca <i style="color:#0B5E03;">true</i> w przypadku powodzenia lub <i style="color:#0B5E03;">false</i> w przypadku niepowodzenia.
      */
     public boolean cashIn(String what, int amount)
     {
@@ -114,6 +125,7 @@ public class Wallet
     /**
      * Realizuje tą samą operację co drugi z konstruktorów,
      * @param cash <b style="color:#B45700;">int</b> - Wpłacana gotówka.
+     * @return Zwraca <i style="color:#0B5E03;">true</i> w przypadku powodzenia lub <i style="color:#0B5E03;">false</i> w przypadku niepowodzenia.
      */
     public boolean cashIn(int cash)
     {

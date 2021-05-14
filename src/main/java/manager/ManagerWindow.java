@@ -3,7 +3,6 @@ import settings.Settings;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -11,16 +10,53 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.Objects;
 
-public class ManagerWindow extends JFrame implements ActionListener, ChangeListener
-{
+/**
+ * Klasa odpowiedzialna za główne okno aplikacji do edycji zapisanych danych do bankomatu.
+ * Pozwala odczytywać pliki <i style="background:rgba(92,92,92,0.5);border-radius: 0.5em;">&nbsp;settings.xml&nbsp;</i> z dowolnego wybranego katalogu.
+ * Umożliwia także stworzenie od zera pliku z danymi.
+ * @author Jakub Jach
+ * @version 1.0
+ * @since 2021-05-10
+ */
+
+public class ManagerWindow extends JFrame implements ActionListener, ChangeListener{
+    /**
+     * Menu pliku.
+     */
     JMenu MFile;
+    /**
+     * Pozycje z menu.
+     */
     JMenuItem Open,Save,Exit;
+    /**
+     * Panel z kartami.
+     */
     JTabbedPane Pane;
+    /**
+     * Panel do edycji ustawień okna aplikacji.
+     */
     AppManager App;
+    /**
+     * Panel do edycji użytkowników.
+     */
     UserManager Usr;
+    /**
+     * Panel do edycji kart.
+     */
     CardManager Crd;
+    /**
+     * Panel do edycji portfela.
+     */
     WalletManager Wlt;
+    /**
+     * Wybieranie folderu do otwarcia.
+     */
     JFileChooser chooser;
+
+    /**
+     * Jedyny konstruktor klasy.
+     * Tworzy okno i wszystkie elementy interfejsu.
+     */
     ManagerWindow()
     {
         this.setTitle("Settings manager ");
@@ -116,6 +152,10 @@ public class ManagerWindow extends JFrame implements ActionListener, ChangeListe
         this.setVisible(true);
     }
 
+    /**
+     * Metoda odpowiedzialna za reagowanie na akcje użytkownika.
+     * @param e <b style="color:#541704;">ActionEvent</b> - Akcja wykonana przez użytkownika np. naciśnięcie przycisku.
+     */
     @Override
     public void actionPerformed(ActionEvent e)
     {
@@ -190,6 +230,11 @@ public class ManagerWindow extends JFrame implements ActionListener, ChangeListe
             System.exit(0);
         }
     }
+
+    /**
+     * Metoda odpowiedzialna za akcję przy przełączeniu karty.
+     * @param e <b style="color:#541704;">ChangeEvent</b> - Wydarzenie przełączania karty.
+     */
     @Override
     public void stateChanged(ChangeEvent e)
     {

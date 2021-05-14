@@ -1,33 +1,64 @@
 package manager;
-
 import settings.Settings;
 import user.Wallet;
-
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class WalletManager extends JPanel implements ActionListener,Manager{
-    private JTextField[] banknotes;
-    private JComboBox<Integer> userIndex;
-    private JButton apply,clear;
-    private static String[] values = {"10","20","50","100","200","500"};
-    private class SpecialWallet extends Wallet
-    {
+/**
+ * Klasa odpowiedzialna za operację na portfelu użytkownika wybranego do edycji w karcie <i>Users</i>.
+ * @author Jakub Jach
+ * @version 1.0
+ * @since 2021-05-12
+ */
 
-        public SpecialWallet(boolean empty) {
-            super(empty);
-        }
+public class WalletManager extends JPanel implements ActionListener,Manager{
+    /**
+     * Pola tekstowe dla różnych nominałów.
+     */
+    private JTextField[] banknotes;
+    /**
+     * Lista rozwijana do odczytywania użytkownika, którego portfel edytujemy.
+     */
+    private JComboBox<Integer> userIndex;
+    /**
+     * Przyciski do zatwierdzenia i resetowania ustawień portfela.
+     */
+    private JButton apply,clear;
+    /**
+     * Nominały banknotów używanych w bankomacie.
+     */
+    private final String[] values = {"10","20","50","100","200","500"};
+
+    /**
+     * Wewnętrzna klasa do edycji zawartości portfela.
+     */
+    private static class SpecialWallet extends Wallet
+    {
+        /**
+         * Konstruktor odziedziczony z klasy <b style="color:#541704;">Wallet</b>.
+         * @param wallet <b style="color:#541704;">Wallet</b> - Portfel, na którego podstawie tworzymy obiekt.
+         */
         public SpecialWallet(Wallet wallet)
         {
             super(wallet);
         }
+
+        /**
+         * Metoda służąca do wpisywania ilości banknotów do portfela.
+         * @param what <b style="color:#0B5E03;">String</b> - Nominał do wpisania
+         * @param amount <b style="color:#B45700;">int</b> - Ilość do wpisania.
+         */
         public void adminSet(String what, int amount)
         {
             super.adminSet(what,amount);
         }
     }
+
+    /**
+     * Jedyny konstruktor klasy.
+     * @param comboBox <b style="color:#541704;">JComboBox</b> - Lista rozwiajana do odczytania bieżącego użytkownika.
+     */
     WalletManager(JComboBox<Integer> comboBox)
     {
         userIndex = comboBox;
@@ -59,8 +90,9 @@ public class WalletManager extends JPanel implements ActionListener,Manager{
         this.add(apply);
         this.add(clear);
     }
-
-
+    /**
+     * Metoda służąca do odświeżania pól w danym obiekcie implementującym interfejs.
+     */
     @Override
     public void updateFields() {
         boolean enable = !Settings.users.isEmpty();
@@ -73,7 +105,10 @@ public class WalletManager extends JPanel implements ActionListener,Manager{
             apply.setEnabled(enable);
             clear.setEnabled(enable);
     }
-
+    /**
+     * Metoda odpowiedzialna za reagowanie na akcje użytkownika.
+     * @param e <b style="color:#541704;">ActionEvent</b> - Akcja wykonana przez użytkownika np. naciśnięcie przycisku.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == apply)
@@ -99,6 +134,5 @@ public class WalletManager extends JPanel implements ActionListener,Manager{
                 banknotes[i].setText("");
             }
         }
-
     }
 }

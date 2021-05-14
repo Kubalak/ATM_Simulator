@@ -1,7 +1,4 @@
 package manager;
-
-import user.CreditCard;
-
 import javax.swing.*;
 
 /**
@@ -10,7 +7,7 @@ import javax.swing.*;
 public class ManagerMain {
     /**
      * Główna metoda programu.
-     * @param args <b style="color:#0B5E03;">String</b> - Argumenty wiersza polecenia dla programu.
+     * @param args <b style="color:#0B5E03;">String[]</b> - Argumenty wiersza polecenia dla programu.
      */
     public static void main(String []args)
     {

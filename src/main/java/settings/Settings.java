@@ -69,6 +69,7 @@ public abstract class Settings
     /**
      * Metoda ładuje dane z pliku o ścieżce podanej przez zmienną <i>path</i> lub jeśli nie jest ustawiona <i style="background:rgba(92,92,92,0.5);border-radius:0.5em;">&nbsp;userdata/settings.xml&nbsp;</i> do pól statycznych zawartych w klasie.<br>
      * Jeśli ładowanie z jakiegoś powodu się nie powiedzie to tworzony jest jeden użytkownik <i>John Trueman</i> z numerem PIN do karty <b>1111</b> z pustym kontem i portfelem, w którym znajduje się po jednym banknocie każdego rodzaju.<br>
+     * @return <b style="color:#B45700;">boolean</b> - Zwraca <i style="color:#0B5E03;">true</i> w przypadku powodzenia lub <i style="color:#0B5E03;">false</i> w przypadku braku możliwości otwarcia pliku.
      */
     public static boolean loadSettings()
     {

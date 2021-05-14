@@ -1,23 +1,53 @@
 package manager;
-
 import settings.Settings;
 import user.CreditCard;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Klasa odpowiedzialna za edycję, dodawanie i usuwanie kart.
+ * @author Jakub Jach
+ * @version 1.0
+ * @since 2021-05-10
+ */
+
 public class CardManager extends JPanel implements ActionListener,Manager{
+    /**
+     * Pola tekstowe dla PIN i stanu konta.
+     */
     private JTextField pin,credit;
+    /**
+     * Przyciski do wykonywania operacji na karcie.
+     */
     private JButton apply, add,delete;
+    /**
+     * Pole wyboru blokady karty.
+     */
     private JCheckBox locked;
+    /**
+     * Lista do wyboru karty do edycji.
+     */
     private JComboBox<Integer> selected, userIndex;
 
+    /**
+     * Klasa wewnętrzna do okna dialogowego.
+     */
     private static class InputDialog extends JPanel
     {
+        /**
+         * Pola tekstowe do wprowadzania danych.
+         */
         JTextField pin,credit;
+        /**
+         * Pole z informacją o blokadzie karty.
+         */
         JCheckBox locked;
+
+        /**
+         * Jedyny konstruktor klasy.
+         */
         InputDialog()
         {
             JLabel pinL,creditL,lockedL;
@@ -38,26 +68,37 @@ public class CardManager extends JPanel implements ActionListener,Manager{
         }
     }
 
+    /**
+     * Klasa wewnętrzna umożliwiająca zarządzanie kartami.
+     */
     private static class SpecialCard extends CreditCard
     {
-
-        public SpecialCard(int PINNo, double value) {
-            super(PINNo, value);
-        }
+        /**
+         * Konstruktor odziedziczony z <i style="color:#541704;">CreditCard</i>.
+         * @param card <b style="color:#541704;">CreditCard</b> - Karta, na podstawie której ma zostać stworzony obiekt.
+         */
         public SpecialCard(CreditCard card)
         {
             super(card);
         }
+
+        /**
+         * Metoda zwracająca PIN do karty.
+         * @return <b style="color:#B45700;">int</b> - PIN do karty.
+         */
         public int getPIN()
         {
             return super.adminPINGet();
         }
     }
 
+    /**
+     * Jedyny konstruktor klasy.
+     * @param comboBox <b style="color:#541704;">JComboBox</b> - Lista rozwiajana do odczytania bieżącego użytkownika.
+     */
     CardManager(JComboBox<Integer> comboBox )
     {
         this.setLayout(null);
-
         userIndex = comboBox;
         JLabel pinL,creditL,selectedL,lockedL;
         pinL = new JLabel("PIN:");
@@ -107,6 +148,7 @@ public class CardManager extends JPanel implements ActionListener,Manager{
         apply.setBounds(selectedL.getX()+5,selected.getY()+selected.getHeight()+5,185,30);
         add.setBounds(apply.getX(),apply.getY()+apply.getHeight()+5,90,30);
         delete.setBounds(add.getX()+add.getWidth()+5,add.getY(),90,30);
+
         pinL.setHorizontalAlignment(SwingConstants.RIGHT);
         pinL.setHorizontalTextPosition(SwingConstants.RIGHT);
         creditL.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -127,8 +169,10 @@ public class CardManager extends JPanel implements ActionListener,Manager{
         this.add(selectedL);
         this.add(lockedL);
         this.add(locked);
-
     }
+    /**
+     * Metoda służąca do odświeżania pól w danym obiekcie implementującym interfejs.
+     */
     @Override
     public void updateFields()
     {
@@ -152,9 +196,7 @@ public class CardManager extends JPanel implements ActionListener,Manager{
             locked.setSelected(card.isLocked());
             selected.removeAllItems();
             for(int i=0;i<Settings.users.get(index).getCards().size();i++)
-            {
                 selected.addItem(i);
-            }
             selected.setSelectedIndex(tmpIndex);
         }
         else
@@ -172,7 +214,10 @@ public class CardManager extends JPanel implements ActionListener,Manager{
             locked.setSelected(false);
         }
     }
-
+    /**
+     * Metoda odpowiedzialna za reagowanie na akcje użytkownika.
+     * @param e <b style="color:#541704;">ActionEvent</b> - Akcja wykonana przez użytkownika np. naciśnięcie przycisku.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == apply)
@@ -186,13 +231,11 @@ public class CardManager extends JPanel implements ActionListener,Manager{
                 CreditCard tmp = new CreditCard(pinNo,creditT);
                 if(locked.isSelected())tmp.lock();
                 Settings.users.get(userIndex.getSelectedIndex()).getCards().set(selected.getSelectedIndex(),tmp);
-
             }
             catch(Exception exception)
             {
                 JOptionPane.showMessageDialog(this,"Invalid arguments!\nException: "+exception.getMessage(),"Input error",JOptionPane.ERROR_MESSAGE);
             }
-
         }
         else if(e.getSource() == add)
         {
@@ -217,7 +260,6 @@ public class CardManager extends JPanel implements ActionListener,Manager{
                 }
                 updateFields();
             }
-
         }
         else if(e.getSource() == delete)
         {
@@ -228,6 +270,5 @@ public class CardManager extends JPanel implements ActionListener,Manager{
         {
             updateFields();
         }
-
     }
 }

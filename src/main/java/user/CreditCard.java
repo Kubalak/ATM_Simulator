@@ -20,7 +20,7 @@ public class CreditCard extends Account
     private boolean locked;
 
     /**
-     * Jeden z dwóch konstruktorów klasy <i>CreditCard</i>.
+     * Jeden z trzech konstruktorów klasy <i>CreditCard</i>.
      * @param PINNo <b style="color:#B45700;">int</b> - Numer PIN nadawany karcie w konstruktorze.
      * @param value <b style="color:#B45700;">double</b> - Stan konta przypisanego karty.
      */
@@ -30,6 +30,11 @@ public class CreditCard extends Account
         this.PINNo = Math.abs(PINNo)%10000;
         locked = false;
     }
+
+    /**
+     * Drugi konstruktor klasy umożliwiajacu tworzenie obiektu będącego kopią obiektu podanego w argumencie.
+     * @param card  <i style="color:#541704;">CreditCard</i> - Karta, której kopię tworzymy.
+     */
     public CreditCard(CreditCard card)
     {
         super(card.checkCredit());
@@ -38,7 +43,7 @@ public class CreditCard extends Account
     }
 
     /**
-     * Drugi z konstruktorów klasy - tworzy nową kartę przypisaną do konta o saldzie 0.
+     * Ostatni z konstruktorów klasy - tworzy nową kartę przypisaną do konta o saldzie 0.
      * @param PINNo <b style="color:#B45700;">int</b> - Numer PIN nowo stworzonej karty.
      */
     public CreditCard(int PINNo)

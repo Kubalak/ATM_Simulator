@@ -1,18 +1,35 @@
 package manager;
 import settings.Settings;
-import user.User;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Klasa odpowiedzialna za ustawienia bankomatu - pozycję okna, walutę oraz użytkownika startowego.
+ * @author Jakub Jach
+ * @version 1.0
+ * @since 2021-05-10
+ */
+
 public class AppManager extends JPanel implements ActionListener, Manager
 {
-
+    /**
+     * Pola tekstowe z ustawieniami do okna i waluty.
+     */
     private JTextField xField,yField,currencyField;
+    /**
+     * Lista rozwijana dla wyboru użytkownika startowego.
+     */
     private JComboBox<Integer> selectedUsr;
+    /**
+     * Przyciski do zatwierdzenia ustawień, zresetowania i podglądu okna.
+     */
     private JButton apply,blank,preview;
+
+    /**
+     * Jedyny konstruktor klasy.
+     */
     public AppManager()
     {
         this.setLayout(null);
@@ -38,6 +55,7 @@ public class AppManager extends JPanel implements ActionListener, Manager
         Y.setFont(new Font("Arial",Font.PLAIN,12));
         currency.setFont(new Font("Arial",Font.PLAIN,12));
         selectUsr.setFont(new Font("Arial",Font.PLAIN,12));
+
         X.setHorizontalAlignment(SwingConstants.RIGHT);
         X.setHorizontalTextPosition(SwingConstants.RIGHT);
         Y.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -46,6 +64,7 @@ public class AppManager extends JPanel implements ActionListener, Manager
         currency.setHorizontalTextPosition(SwingConstants.RIGHT);
         selectUsr.setHorizontalAlignment(SwingConstants.RIGHT);
         selectUsr.setHorizontalTextPosition(SwingConstants.RIGHT);
+
         X.setBounds(85,25,65,40);
         xField.setBounds(X.getX()+X.getWidth()+5,X.getY(),100,40);
         Y.setBounds(X.getX(),X.getY()+X.getHeight()+5,65,40);
@@ -54,6 +73,7 @@ public class AppManager extends JPanel implements ActionListener, Manager
         currencyField.setBounds(X.getX()+X.getWidth()+5, currency.getY(),100,40);
         selectUsr.setBounds(X.getX() - 40,currency.getY()+currency.getHeight()+5,105,40);
         selectedUsr.setBounds(X.getX()+X.getWidth()+5, selectUsr.getY(),100,40);
+
         selectedUsr.setEditable(false);
         selectedUsr.setFocusable(false);
         apply.setFocusable(false);
@@ -82,9 +102,10 @@ public class AppManager extends JPanel implements ActionListener, Manager
         this.add(apply);
         this.add(blank);
         this.add(preview);
-
     }
-
+    /**
+     * Metoda służąca do odświeżania pól w danym obiekcie implementującym interfejs.
+     */
     @Override
     public void updateFields()
     {
@@ -108,6 +129,10 @@ public class AppManager extends JPanel implements ActionListener, Manager
         }
 
     }
+    /**
+     * Metoda odpowiedzialna za reagowanie na akcje użytkownika.
+     * @param e <b style="color:#541704;">ActionEvent</b> - Akcja wykonana przez użytkownika np. naciśnięcie przycisku.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == apply)
