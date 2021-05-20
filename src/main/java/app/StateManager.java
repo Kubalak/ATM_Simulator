@@ -28,7 +28,7 @@ Zwracane kody:
 /**
  * Klasa odpowiadająca za menadżer stanów wewnętrznych bankomatu.<br>
  * Jest ona odpowiedzialna za prawidłową rekację na sygnały wysyłane z klasy <i>Window</i> i reagowanie na nie.
- * @author Jakub Jach
+ * @author Jakub Jach, Patryk Jaworski
  * @version 1.51
  * @since 2021-01-10
  */
