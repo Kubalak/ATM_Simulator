@@ -1,6 +1,5 @@
 package user;
 import xml.XMLTools;
-
 import java.util.Arrays;
 import java.util.Vector;
 

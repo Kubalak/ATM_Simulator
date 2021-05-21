@@ -16,7 +16,7 @@ public class UserManager extends JPanel implements ActionListener,Manager{
     /**
      * Pola tekstowe z imieniem i nazwiskiem użytkownika.
      */
-    private JTextField name,surname;
+    private final JTextField name,surname;
     /**
      * Listy rozwijane dla wybranej karty i edytowanego użytkownika.
      */
