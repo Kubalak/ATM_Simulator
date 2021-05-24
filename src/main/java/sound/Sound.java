@@ -34,7 +34,7 @@ public class Sound{
     /**
      * Metod odpowiedzialna za odtwarzenie zapętlonego dźwięku.
      * Korzysta ona z dźwięków zawartych jako zasób.
-     * @param musicName<b style="color:#0B5E03;">String</b> - Ścieżka do dźwięku w zasobach.
+     * @param musicName <b style="color:#0B5E03;">String</b> - Ścieżka do dźwięku w zasobach.
      */
     public void playBackgroundMusic(String musicName) {
         try {

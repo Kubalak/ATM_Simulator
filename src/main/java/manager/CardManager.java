@@ -252,7 +252,7 @@ public class CardManager extends JPanel implements ActionListener,Manager{
                     if(creditTmp < 0.0)throw new Exception("Invalid credit!");
                     CreditCard card = new CreditCard(pinTmp,creditTmp);
                     if(lockedTmp)card.lock();
-                    Settings.users.get(userIndex.getSelectedIndex()).getCards().add(card);
+                    Settings.users.get(userIndex.getSelectedIndex()).addCard(card);
                 }
                 catch(Exception exception)
                 {

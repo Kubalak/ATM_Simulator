@@ -641,7 +641,7 @@ catch(Exception e)
             }
             else
             {
-                JOptionPane.showMessageDialog(this,"Yo cannot change the user now","Warning",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this,"You cannot change the user now","Warning",JOptionPane.WARNING_MESSAGE);
             }
         }
         else if(e.getSource()==SwitchCard)

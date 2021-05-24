@@ -130,6 +130,7 @@ public abstract class Settings
             users.get(0).addCards(tmp);
             users.get(0).setWallet(new Wallet(false));
             currentUser = 0;
+            ANumberOfUsers = 1;
             result = false;
         }
         return result;

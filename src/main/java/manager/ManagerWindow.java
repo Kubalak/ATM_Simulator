@@ -109,7 +109,6 @@ public class ManagerWindow extends JFrame implements ActionListener, ChangeListe
                        Settings.saveState();
                    }
                }
-                Settings.saveState();
                 }
                 System.exit(0);
             }
@@ -172,6 +171,7 @@ public class ManagerWindow extends JFrame implements ActionListener, ChangeListe
                 Settings.path = chooser.getSelectedFile().getAbsolutePath();
                 Settings.path+=Settings.path.contains("\\")?"\\":"/";
                 boolean isOK = Settings.loadSettings();
+                if(!isOK)Settings.path = null;
                 this.setTitle("Settings manager: Open "+(isOK?"Success":"Failed"));
                 App.updateFields();
                 Usr.updateFields();

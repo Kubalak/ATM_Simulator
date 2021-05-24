@@ -38,7 +38,7 @@ public class StateManager extends JPanel
     /**
      * Stany weenętrzne bankomatu.
      */
-    private final String[] states = {"IDLE","OUTPUT","INPUT","PIN","OP_SEL","SUMMARY","CREDIT","CHANGE","WRONG_PIN","CARD_BLOCKED"};
+    private final String[] states = {"IDLE","OUTPUT","INPUT","PIN","OP_SEL","SUMMARY","CREDIT","CHANGE","WRONG_PIN","CARD_BLOCKED","WITHDRAW_FLD"};
     /**
      * Ostatni stan bankomatu.
      */
@@ -376,6 +376,17 @@ public class StateManager extends JPanel
             RightMiddle.setText("");
             RightBottom.setText("");
         }
+        else if(currentState.equals("WITHDRAW_FLD"))
+        {
+            LeftTop.setText("");
+            LeftMiddle.setText("");
+            LeftBottom.setText("");
+            Top.setText("Not enough money!");
+            Center.setText("Press Enter to continue");
+            RightTop.setText("");
+            RightMiddle.setText("");
+            RightBottom.setText("");
+        }
 
         this.repaint();
     }
@@ -458,7 +469,8 @@ public class StateManager extends JPanel
     }
 
     /**
-     * Metoda obsługująca sygnały w stanie <i>CHANGE</i>
+     * Metoda obsługująca sygnały w stanie <i>CHANGE</i>.<br>
+     * Metoda ta służy do zmiany PIN do karty.
      * @param signal <b style="color:#B45700;">int</b> - Sygnał wysyłany do metody.
      * @return <b style="color:#B45700;">int</b> - Zwraca 0 w przypadku powodzenia, -1 w przypadku niepowodzenia lub -2 jeśli sygnał nie jest obsługiwany.
      */
@@ -516,7 +528,8 @@ public class StateManager extends JPanel
         return -2;
     }
     /**
-     * Metoda obsługująca sygnały w stanie <i>CREDIT</i>
+     * Metoda obsługująca sygnały w stanie <i>CREDIT</i>.<br>
+     * Metoda odczytująca stan konta.
      * @param signal <b style="color:#B45700;">int</b> - Sygnał wysyłany do metody.
      * @return <b style="color:#B45700;">int</b> - Zwraca 0 w przypadku powodzenia, -1 w przypadku niepowodzenia lub -2 jeśli sygnał nie jest obsługiwany.
      */
@@ -576,13 +589,13 @@ public class StateManager extends JPanel
         return -1;
     }
     /**
-     * Metoda obsługująca sygnały w stanie <i>OUTPUT</i>
+     * Metoda obsługująca sygnały w stanie <i>OUTPUT</i>.<br>
+     * Służy do wypłaty gotówki.
      * @param signal <b style="color:#B45700;">int</b> - Sygnał wysyłany do metody.
      * @return <b style="color:#B45700;">int</b> - Zwraca 0 w przypadku powodzenia, -1 w przypadku niepowodzenia lub -2 jeśli sygnał nie jest obsługiwany.
      */
     private int proceedWithdraw(int signal)
     {
-
 
         if(signal == -1 && !isOtherAmountSelected)
         {
@@ -629,15 +642,21 @@ public class StateManager extends JPanel
             }
             else if(signal == -7)
             {
-                if(user.withdraw(moneyToBurn))
+                if(moneyToBurn % 10 == 0) {
+                    if (user.withdraw(moneyToBurn)) {
+                        System.out.println("Withdraw success!");
+                        changeState(states[5]);
+                        this.returnCard();
+                        return 0;
+                    }
+                    System.out.println("Withdraw failed!\nPlease select another option.");
+                    return -1;
+                }
+                else
                 {
-                    System.out.println("Withdraw success!");
-                    changeState(states[5]);
-                    this.returnCard();
+                    moneyToBurn = 0;
                     return 0;
                 }
-                System.out.println("Withdraw failed!\nPlease select another option.");
-                return -1;
             }
             else if(signal == -8)
             {
@@ -671,7 +690,9 @@ public class StateManager extends JPanel
         return -2;
     }
     /**
-     * Metoda obsługująca sygnały w stanie <i>PIN</i>
+     * Metoda obsługująca sygnały w stanie <i>PIN</i>.<br>
+     * Służy do wprowadzanie kodu PIN.<br>
+     * Po 3 nieudanych próbach blokuje karte.
      * @param signal <b style="color:#B45700;">int</b> - Sygnał wysyłany do metody.
      * @return <b style="color:#B45700;">int</b> - Zwraca 0 w przypadku powodzenia, -1 w przypadku niepowodzenia lub -2 jeśli sygnał nie jest obsługiwany.
      */
@@ -799,13 +820,13 @@ public class StateManager extends JPanel
         }
     }
     /**
-     * Najdłuższa i najbardziej skomplikowana metoda z tej klasy.<br>
+     * Główna i jednocześnie najważniejsza metoda klasy.<br>
      * Odpowiada ona za reakcję na sygnały wysyłane przez klasę <i>Window</i>.
      * @param signal <b style="color:#B45700;">int</b> - Sygnał wysyłany przez okno:<br>
      * <div style="padding-left:4em;">0 do 9 cyfry z numpada<br>
-     * 10  000 z numpada<br>
-     * -1 do -6 boczne przyciski przy ekranie<br>
-     * -7 do -10 przyciski <b style="font-family:'Calibri';color:blue;">ENTER DELETE CLEAR CANCEL</b><br></div>
+     * 10 - 000 z numpada<br>
+     * -1 do -6 - boczne przyciski przy ekranie<br>
+     * -7 do -10 - przyciski <b style="font-family:'Calibri';color:blue;">ENTER DELETE CLEAR CANCEL</b><br></div>
      * @param base <b style="color:#541704;">Wallet</b> - Portfel używany do wykonywania operacji przez bankomat - odpowiednik szczeliny na pieniądze w prawdziwym bankomacie.
      * @return <b style="color:#B45700;">int</b> - Zwraca 0 w przypadku powodzenia operacji, -1 gdy operacja się nie powiedzie lub -2 jeśli sygnał nie jest rozpoznawany w danym momencie.
      */
@@ -852,6 +873,10 @@ public class StateManager extends JPanel
                 break;
             case "OUTPUT":
                 returnCode = proceedWithdraw(signal);
+                if(returnCode == -1)
+                {
+                    changeState(states[10]);
+                }
                 break;
             case "PIN":
                 returnCode = proceedPIN(signal);
@@ -887,6 +912,20 @@ public class StateManager extends JPanel
                     changeState(states[0]);
                     returnCard();
                 }
+                break;
+            case "WITHDRAW_FLD":
+                if(signal == -7)
+                {
+                    returnCode = 0;
+                    changeState(states[1]);
+                }
+                else if(signal==-10)
+                {
+                    returnCode = 0;
+                    changeState(states[0]);
+                    returnCard();
+                }
+                break;
         }
         if(returnCode == -2)System.out.println("Unrecognized operation!");
         updateVisible();

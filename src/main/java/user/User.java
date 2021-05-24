@@ -88,7 +88,7 @@ public class User
      */
     public boolean switchCard(int CardNO)
     {
-        if(CardNO>=ANumberOfCards )return false;
+        if(CardNO>=ANumberOfCards || CardNO >= cards.size())return false;
         currentCard = CardNO;
         return true;
     }

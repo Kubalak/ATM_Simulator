@@ -54,14 +54,14 @@
       <surname>Brzęczysczykiewicz</surname>
       <wallet>
          <tens>4</tens>
-         <twenties>2</twenties>
-         <fifties>2</fifties>
+         <twenties>3</twenties>
+         <fifties>3</fifties>
          <hundreds>2</hundreds>
          <twohundreds>1</twohundreds>
          <fivehundreds>0</fivehundreds>
       </wallet>
       <cards>
-      <current>0</current>
+      <current>1</current>
          <card>
             <pin>0101</pin>
             <locked>YES</locked>
@@ -70,7 +70,7 @@
          <card>
             <pin>1111</pin>
             <locked>NO</locked>
-            <credit>2500.23</credit>
+            <credit>2430.23</credit>
          </card>
       </cards>
    </user>

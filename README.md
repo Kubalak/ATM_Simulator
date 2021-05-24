@@ -1,9 +1,14 @@
 # ATM_Simulator
 Atm simulator project repository.
 
+# Changelog v1.0.1
+Minor bugfixes and upgrades.<br>
+Slight changes in `StateManager` class - added new states for withdraw failure.<br>
+Documentation changes.
+
 # Changelog v1.0
 Fixed known issues in `UserManager` class.
-When loading file confirm dialog is shown to confirm operation if exisiting users are found.<br>
+When loading file confirm dialog is shown to confirm operation if existing users are found.<br>
 While loading file existing configuration is deleted.<br>
 When exiting confirm dialog is shown whether to save file or not.<br>
 Minor sounds tweaks.<br>
@@ -14,7 +19,7 @@ Created `AppManager` `UserManager` `CardManager` `WalletManager` classes for the
 Finished beta version of manager app.<br>
 Manager offers:<br><b>
 - Loading `settings.xml` files from any folder.<br>
-- Changing Window position with previe function.<br>
+- Changing Window position with preview function.<br>
 - Selecting user to start application with.<br>
 - Selecting active card for users.<br>
 - Adding / editing / deleting users.<br>
@@ -31,7 +36,7 @@ App now uses system GUI style.<br>
 Changed wallet behaviour - it is now only accessible for deposit operations. In other states it is hidden.<br>
 App version is now read from <i>`VERSION`</i> file that is used as resource.<br>
 Added handling exceptions unhandled in other classes in `Main` class.<br>
-When unhandled exception is thrown user is infomed about this fact.<br>
+When unhandled exception is thrown user is informed about this fact.<br>
 For generated *.jar file use <i>run.me.bat</i> to force JVM to run in UTF-8 encoding.
 
 # Changelog v0.7.0
@@ -44,7 +49,7 @@ Started writing <a href = "https://junit.org"><b>JUnit5</b></a> tests.
 
 ## Tweaks
 `Window` class now uses objects of the `Sound` class to play certain sound or background music.
-`StateManager` class now uses methods of the `Sound` class to play certain sound after sucesfull deposit or withdraw.
+`StateManager` class now uses methods of the `Sound` class to play certain sound after successful deposit or withdraw.
 Method <i>returnCard()</i> now returns card in every state.
 
 # Changelog v0.5.5.0
@@ -116,7 +121,7 @@ Created classes:<br>
 Money withdrawal.<br/>
 Card insertion / removal.<br/>
 Account balance check.<br/>
-Card now locks after three unsuccessfull attempts.<br/>
+Card now locks after three unsuccessful attempts.<br/>
 <br/>
 ## Tweaks:<br/>
 Inserting cards and PIN codes now work in different order.<br/>

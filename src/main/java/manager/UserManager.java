@@ -103,7 +103,7 @@ public class UserManager extends JPanel implements ActionListener,Manager{
         selectedCrd.setBounds(selectedCrdL.getX()+selectedCrdL.getWidth()+5,selectedCrdL.getY(),100,40);
         selectedL.setBounds(selectedCrdL.getX(),selectedCrdL.getY()+selectedCrdL.getHeight()+10,75,40);
         selected.setBounds(selectedL.getX()+selectedL.getWidth()+5,selectedL.getY(),100,40);
-        apply.setBounds(nameL.getX(),selected.getY()+selected.getHeight()+5,185,30);
+        apply.setBounds(nameL.getX() - 5,selected.getY()+selected.getHeight()+5,185,30);
         add.setBounds(apply.getX(),apply.getY()+apply.getHeight()+5,90,30);
         delete.setBounds(add.getX()+add.getWidth()+5,add.getY(),90,30);
 
