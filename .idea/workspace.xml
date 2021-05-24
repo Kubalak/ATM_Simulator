@@ -3,6 +3,7 @@
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
       <artifact name="ATM_Manager" />
+      <artifact name="ATM_Simulator" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -10,7 +11,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c667451-499f-40be-89f7-96d4f1ac4c0f" name="Default Changelist" comment="Update">
-      <change beforePath="$PROJECT_DIR$/Documentation(PL).7z" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ATM_Simulator_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ATM_Simulator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ATM_Simulator_jar/run.me.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ATM_Simulator_jar/userdata/24.05.2021_193531.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ATM_Simulator_jar/userdata/settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +54,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -63,7 +69,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="app.Main" />
       <module name="ATM_Simulator" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/out/artifacts/ATM_Simulator_jar" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/out/artifacts/ATM_Simulator" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="app.*" />
@@ -77,7 +83,7 @@
     <configuration name="ManagerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="manager.ManagerMain" />
       <module name="ATM_Simulator" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/out/artifacts/ATM_Simulator_jar" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/out/artifacts/ATM_Simulator" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="manager.*" />
@@ -114,8 +120,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CreditCardTest" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.CreditCardTest" />
         <item itemvalue="Application.ManagerMain" />
         <item itemvalue="JUnit.WalletTest" />
       </list>
@@ -291,7 +297,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621878483703</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Update">
+      <created>1621878688693</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1621878688693</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
