@@ -4,6 +4,7 @@ Atm simulator project repository.
 # Changelog v1.0.1
 Minor bugfixes and upgrades.<br>
 Slight changes in `StateManager` class - added new states for withdraw failure.<br>
+Added background icon for `StateManager`<br>
 Documentation changes.
 
 # Changelog v1.0

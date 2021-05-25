@@ -70,7 +70,7 @@ public class StateManager extends JPanel
     /**
      * Etykiety używane do komunikacji ze światem zewnętrznym.
      */
-    private final JLabel LeftTop,LeftMiddle,LeftBottom,Top,Center,RightTop,RightMiddle,RightBottom;
+    private final JLabel LeftTop,LeftMiddle,LeftBottom,Top,Center,RightTop,RightMiddle,RightBottom,Background;
     /**
      * Obiekt służący do odtwarzania dźwięków.
      */
@@ -93,6 +93,15 @@ public class StateManager extends JPanel
         this.setLayout(null);
         this.setBounds(0,0,584,329);
         this.setBorder( BorderFactory.createLoweredBevelBorder());
+        Background = new JLabel();
+        Background.setBounds(0,0,584,329);
+        try {
+            Background.setIcon(new ImageIcon(this.getClass().getResource("/textures/background.png")));
+        }
+        catch(NullPointerException exception)
+        {
+            System.out.println(exception.getMessage());
+        }
 
         LeftTop = new JLabel("");
         LeftTop.setFont(new Font("Consolas",Font.PLAIN,20));
@@ -143,6 +152,7 @@ public class StateManager extends JPanel
         currentState = states[0];
         stateChanged = false;
 
+
         this.add(LeftTop);
         this.add(LeftMiddle);
         this.add(LeftBottom);
@@ -151,6 +161,7 @@ public class StateManager extends JPanel
         this.add(RightBottom);
         this.add(Top);
         this.add(Center);
+        this.add(Background);
         this.repaint();
         System.out.println("Insert card.");
     }
