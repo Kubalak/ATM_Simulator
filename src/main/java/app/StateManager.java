@@ -248,6 +248,7 @@ public class StateManager extends JPanel
         {
             isCardInserted = false;
             System.out.println("Please take your card back.");
+            new Sound().playSound("/sounds/wysuwanie_karty.wav");
             return 0;
         }
         else System.out.println("Card is not inserted!");
@@ -571,8 +572,6 @@ public class StateManager extends JPanel
      */
     private int tryWithdraw(int value)
     {
-
-
         if(user.withdraw(value))
         {
             System.out.println("Withdraw success!");
@@ -584,7 +583,7 @@ public class StateManager extends JPanel
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            }else if(random_number == 1) {
+            }else{
                 sounds_play.playSound("/sounds/wysuwanie_gotowki2.wav");
                 try {
                     Thread.sleep(2000);

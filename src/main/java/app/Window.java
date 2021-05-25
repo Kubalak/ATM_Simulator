@@ -594,7 +594,7 @@ catch(Exception e)
         }
         else if(e.getSource()==keyCancel){
             State.sendSignal(-10,operational);
-            sounds_play.playSound("/sounds/wysuwanie_karty.wav");
+            sounds_play.playSound("/sounds/dzwiek_klikania.wav");
         }
         else if(e.getSource()==keyCardtestonly)
         {
