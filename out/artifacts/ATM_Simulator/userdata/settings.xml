@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <users>
 <currency>PLN</currency>
-<posX>21</posX>
-<posY>14</posY>
+<posX>-2</posX>
+<posY>2</posY>
   <current>2</current>
    <user>
       <name>Johnny</name>

@@ -10,8 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c667451-499f-40be-89f7-96d4f1ac4c0f" name="Default Changelist" comment="Update">
-      <change beforePath="$PROJECT_DIR$/target/classes/app/StateManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/StateManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/Window.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -330,7 +329,21 @@
       <option name="project" value="LOCAL" />
       <updated>1621946925302</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Update">
+      <created>1621947401164</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1621947401164</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Update">
+      <created>1621947465841</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1621947465841</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
