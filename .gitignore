@@ -1,6 +1,6 @@
 # Project exclude paths
-/JAVA_PROJEKT_JACH_JAWORSKI_KUDŁA.docx
-/JAVA_PROJEKT_JACH_JAWORSKI_KUDŁA.pdf
+/*.docx
+/*.pdf
 /.txt
 /0.xcf
 /000.xcf
@@ -28,5 +28,3 @@
 /enter_w.xcf
 /recipt_a.xcf
 /recipt_in.xcf
-/settings.xml
-/Wytyczne do klas.txt
