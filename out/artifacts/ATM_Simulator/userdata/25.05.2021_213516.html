@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Trans-unit</title>
+	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-vidth, initial-scale=1" />
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
+		<div class="container navbar-brand">Trans-unit</div>
+	</nav>
+	<div id="app">
+		<title>Trans unit</title>
+		<div class="container">
+			<form>
+				<label>Source</label>
+				<input class="form-control" type="text" id="src"/>
+				<label>Target</label>
+				<input class="form-control" type="text" id="trgt"/>
+				<label>Copy paste value</label>
+				<textarea id="html" class="form-control"></textarea>
+			</form>
+			<button class="btn btn-success mt-3" onclick="copy()"><img src = "https://img.icons8.com/ios/30/000000/copy.png"/><label style="padding-left: 5px; cursor: pointer;">Copy to clipboard!</label></button>
+		</div>
+	</div>
+	<script>
+	$('input[type=text]').bind('input propertychange', function()
+	{
+		src = document.getElementById("src").value;
+		trgt = document.getElementById("trgt").value;
+		html = document.getElementById("html");
+		html.innerHTML = '&lt;trans-unit id=&quot;'+src+'&quot;&gt;\n'+'\t\t&lt;source&gt;'+src+'&lt;/source&gt;\n\t\t'+'&lt;target&gt;'+trgt+'&lt;/target&gt;\n&lt;/trans-unit&gt;';
+	})
+	function copy()
+	{
+		text = document.getElementById("html");
+		text.select();
+		text.setSelectionRange(0, 9999999);
+		if(document.execCommand("copy"))console.log("Success!");
+		else console.log("Failure!");
+
+	}
+	</script>
+</body>
+
+</html>
