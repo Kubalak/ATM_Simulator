@@ -7,41 +7,156 @@
 	<link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-vidth, initial-scale=1" />
+	<style>
+		#app{
+			background-color: #1e1e1e;
+		}
+		.form-control{
+			color:rgb(255, 255, 255);
+			background-color: rgba(153, 153, 153, 0.5);
+		}
+		.form-control:read-only
+		{
+			background-color: rgba(153, 153, 153, 0.2);
+		}
+		.form-control:focus
+		{
+			color:rgb(255, 255, 255);
+			background-color: rgba(153, 153, 153, 0.8);
+		}
+			</style>
+	<link rel="icon" href="http://www.kubaj1.neostrada.pl/icon.ico"/>
 </head>
 
-<body>
-	<nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
-		<div class="container navbar-brand">Trans-unit</div>
-	</nav>
-	<div id="app">
-		<title>Trans unit</title>
-		<div class="container">
-			<form>
-				<label>Source</label>
-				<input class="form-control" type="text" id="src"/>
-				<label>Target</label>
-				<input class="form-control" type="text" id="trgt"/>
-				<label>Copy paste value</label>
-				<textarea id="html" class="form-control"></textarea>
-			</form>
-			<button class="btn btn-success mt-3" onclick="copy()"><img src = "https://img.icons8.com/ios/30/000000/copy.png"/><label style="padding-left: 5px; cursor: pointer;">Copy to clipboard!</label></button>
+<body id="app">
+<title>Trans unit </title>
+<nav class="navbar navbar-dark bg-primary">
+	<div class="container navbar-brand">Trans-unit file
+		<div class="input-group">
+			<input type="file" id="formFile" class="form-control" aria-describedby="button-addon2" />
+			<button type="button" id="button-addon2"class="btn btn-success" onclick="load()">Load file!<span id="load" style="padding-left: 15px;"></span></button>
+		</div>
+
+</nav>
+<div >
+
+	<div class="container">
+		<label>Source</label>
+		<div class="input-group mb-3">
+			<input class="form-control" aria-describedby="button-addon2" type="text" id="src"/>
+			<button id="button-addon2"class="btn btn-success" onclick="copy('src')">
+
+				<img src = "https://img.icons8.com/ios/30/000000/copy.png"/>
+				<label style="padding-left: 5px; cursor: pointer;">Copy to clipboard!</label>
+			</button>
+		</div>
+		<label>Target</label>
+		<div class="input-group mb-3">
+			<input class="form-control" type="text" aria-describedby="button-addon2" id="trgt"/>
+			<button id="button-addon2" class="btn btn-success" onclick="copy('trgt')"><img src = "https://img.icons8.com/ios/30/000000/copy.png"/><label style="padding-left: 5px; cursor: pointer;">Copy to clipboard!</label></button>
+		</div>
+		<div class="mb-3">
+			<label>Translations value</label>
+			<textarea id="html" class="form-control" style="height: 150px;" readonly></textarea>
+			<button class="btn btn-success mt-3" onclick="copy('html')"><img src = "https://img.icons8.com/ios/30/000000/copy.png"/><label style="padding-left: 5px; cursor: pointer;">Copy textarea to clipboard!</label></button>
+			<button class="btn btn-light mt-3 ml-5" onclick="validate()" id="validbtn"><img src = "https://img.icons8.com/ios/30/000000/copy.png"/><label style="padding-left: 5px; cursor: pointer;">Validate translation!</label><span id="valid"></span></button>
+			<button class="btn btn-light mt-3 ml-5" onclick="add()" id="validaddbtn"><img src = "https://img.icons8.com/ios/30/000000/copy.png"/><label style="padding-left: 5px; cursor: pointer;">Validate translation and add!</label></button>
+		</div>
+		<label>PHP code</label>
+		<div class="input-group mb-3">
+			<input class="form-control" type="text" aria-describedby="button-addon2" id="php" readonly/>
+			<button id="button-addon2" class="btn btn-success" onclick="copy('php')"><img src = "https://img.icons8.com/ios/30/000000/copy.png"/><label style="padding-left: 5px; cursor: pointer;">Copy to clipboard!</label></button>
+		</div>
+		<label>Json encode PHP code</label>
+		<div class="input-group mb-3">
+			<input class="form-control" type="text" aria-describedby="button-addon2" id="json" readonly/>
+			<button id="button-addon2" class="btn btn-success" onclick="copy('json')"><img src = "https://img.icons8.com/ios/30/000000/copy.png"/><label style="padding-left: 5px; cursor: pointer;">Copy to clipboard!</label></button>
 		</div>
 	</div>
-	<script>
+</div>
+<div style="visibility: hidden;" id="translations"></div>
+<script>
+	class Translation
+	{
+		constructor(source, target)
+		{
+			this.source = source;
+			this.target = target;
+		}
+		get Source()
+		{
+			return this.source;
+		}
+		get Target()
+		{
+			return this.target;
+		}
+	}
+	var translations = [];
 	$('input[type=text]').bind('input propertychange', function()
 	{
 		src = document.getElementById("src").value;
 		trgt = document.getElementById("trgt").value;
 		html = document.getElementById("html");
-		html.innerHTML = '&lt;trans-unit id=&quot;'+src+'&quot;&gt;\n'+'\t\t&lt;source&gt;'+src+'&lt;/source&gt;\n\t\t'+'&lt;target&gt;'+trgt+'&lt;/target&gt;\n&lt;/trans-unit&gt;';
+		php = document.getElementById("php");
+		json = document.getElementById("json");
+		html.innerHTML = '&lt;trans-unit id=&quot;'+src+'&quot;&gt;\n'+'\t\t&lt;source&gt;'+src+'&lt;/source>\n\t\t&lt;target&gt;'+trgt+'&lt;/target&gt;\n&lt;/trans-unit&gt;';
+		php.value = '$this->translator->trans(\''+src+'\')';
+		json.value = 'json_encode(array($this->translator->trans(\''+src+'\')))';
 	})
-	function copy()
+	function copy(id)
 	{
-		text = document.getElementById("html");
+		text = document.getElementById(id);
 		text.select();
 		text.setSelectionRange(0, 9999999);
-		if(document.execCommand("copy"))console.log("Success!");
-		else console.log("Failure!");
+		if(document.execCommand("copy"))console.log('Successffully copied!');
+		else console.log('Copy failed!');
+
+	}
+	function validate()
+	{
+		src = document.getElementById("src").value;
+		validator = document.getElementById("valid");
+		button = document.getElementById("validbtn");
+		if(document.getElementById(src) != null && document.getElementById(src) != undefined)
+		{
+			validator.innerHTML = "<img style=\"height: 2em; padding-left: 15px;\" src=\"http://clipart-library.com/image_gallery/28751.png\"/>";
+			button.title ='Validation failed!';
+			return false;
+		}
+		validator.innerHTML = "<img style=\"height: 2em; padding-left: 15px;\" src=\"http://clipart-library.com/images/rTjrRKEec.png\"/>";
+		button.title = 'Validation success!';
+		return true;
+	}
+	function add()
+	{
+		if(validate())
+		{
+
+		}
+		else{
+
+		}
+	}
+	function load()
+	{
+		var file = document.getElementById("formFile");
+		var result = document.getElementById("load");
+		if(file.files.length)
+    	{
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+        	document.getElementById('translations').innerHTML = e.target.result;
+    	};
+
+        reader.readAsText(file.files[0]);
+
+		result.innerHTML = "<img style=\"height: 1.5em; padding-left: 15px;\" src=\"http://clipart-library.com/images/rTjrRKEec.png\"/>";
+   	 	} else {
+			result.innerHTML = "<img style=\"height: 1.5em; padding-left: 15px;\" src=\"http://clipart-library.com/image_gallery/28751.png\"/>";
+			console.log('Not exists');
+		}
 
 	}
 	</script>
